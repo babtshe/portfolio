@@ -1,0 +1,73 @@
+.projects {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.projects__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.projects__link {
+  position: relative;
+  display: block;
+  margin: 20px;
+  width: 400px;
+  height: 400px;
+  box-shadow: 0 0 15px white;
+  text-decoration: none;
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 200ms;
+    text-align: center;
+    font-family: "Verdana", "Tahoma", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 400px;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &:active::before {
+    background-color: rgba(100, 100, 100, 0.8);
+    opacity: 1;
+  }
+
+  &--sedona {
+    background-image: url("../img/sedona_sandbox.jpg");
+    background-repeat: no-repeat;
+
+    &::before {
+      content: "sedona";
+    }
+  }
+
+  &--device {
+    background: url("../img/device_sandbox.jpg") no-repeat;
+
+    &::before {
+      content: "device";
+    }
+  }
+}

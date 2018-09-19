@@ -1,0 +1,43 @@
+{
+  "name": "Portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Личная страница с примерами работ",
+  "scripts": {
+    "test": "npm run eslint && npm run stylelint",
+    "eslint": "eslint ./gulpfile.js ./source/js/",
+    "stylelint": "stylelint \"source/scss/**/*.scss\" --syntax scss",
+    "build": "gulp build",
+    "start": "gulp serve"
+  },
+  "author": "Alexander Babchenko",
+  "engines": {
+    "node": "8"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.0",
+    "@babel/preset-env": "7.1.0",
+    "autoprefixer": "9.1.5",
+    "browser-sync": "2.24.7",
+    "chai": "4.1.2",
+    "css-mqpacker": "7.0.0",
+    "del": "3.0.0",
+    "eslint": "5.6.0",
+    "gulp": "3.9.1",
+    "gulp-better-rollup": "3.3.0",
+    "gulp-csso": "3.0.1",
+    "gulp-imagemin": "4.1.0",
+    "gulp-mocha": "6.0.0",
+    "gulp-plumber": "1.2.0",
+    "gulp-postcss": "8.0.0",
+    "gulp-rename": "1.4.0",
+    "gulp-sass": "4.0.1",
+    "gulp-sourcemaps": "2.6.4",
+    "gulp-svgstore": "7.0.0",
+    "gulp-uglify": "3.0.1",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-commonjs": "9.1.8",
+    "rollup-plugin-node-resolve": "3.4.0",
+    "stylelint": "9.5.0"
+  }
+}

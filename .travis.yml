@@ -1,0 +1,33 @@
+language: node_js
+
+node_js:
+  - "8.11"
+
+notifications:
+  email: false
+
+cache:
+  directories:
+    - "node_modules"
+
+env:
+  global:
+  - ENCRYPTION: f4f06973deab
+  - USER: "Travis CI"
+  - EMAIL: "username@example.com"
+  - REPO: "name of target repo"
+  - FILES: "build/*"
+  - GH_REPO: "https://github.com/babtshe/portfolio.git"
+  - secure: "put travis gem output here => http://docs.travis-ci.com/user/encryption-keys/"
+
+before_script:
+  - npm install -g gulp-cli
+
+script: gulp build
+
+deploy:
+  provider: script
+  skip-cleanup: true
+  script: bash push.sh
+  on:
+    branch: master
