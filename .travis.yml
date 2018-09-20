@@ -12,22 +12,28 @@ cache:
 
 env:
   global:
-  - ENCRYPTION: f4f06973deab
-  - USER: "Travis CI"
-  - EMAIL: "username@example.com"
-  - REPO: "name of target repo"
-  - FILES: "build/*"
-  - GH_REPO: "https://github.com/babtshe/portfolio.git"
-  - secure: "put travis gem output here => http://docs.travis-ci.com/user/encryption-keys/"
+  - USER: "babtshe"
+  - EMAIL: "babtshe@yandex.ru"
+
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_e0c9dc91188f_key -iv $encrypted_e0c9dc91188f_iv -in deploy_key.enc -out deploy_key -d
+  - chmod 600 deploy_key
+  - eval `ssh-agent -s`
+  - ssh-add deploy_key
 
 before_script:
   - npm install -g gulp-cli
 
 script: gulp build
 
-deploy:
-  provider: script
-  skip-cleanup: true
-  script: bash push.sh
-  on:
-    branch: master
+after_success:
+  - git config --global user.email ${EMAIL}
+  - git config --global user.name ${USER}
+  - cd build
+  - git init
+  - git add .
+  - git commit -m "Deploy by Travis"
+  - git remote add production "git@github.com:babtshe/babtshe.github.io.git"
+  - git push -f production master
+
